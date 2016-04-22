@@ -34,6 +34,12 @@ module.exports = {
         ]
     },
     plugins: [
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                //supresses warnings, usually from module minification
+                warnings: false
+            }
+        }),
         // Simply copies the files over
         new CopyWebpackPlugin([
             { from: dir_html } // to: output.path
