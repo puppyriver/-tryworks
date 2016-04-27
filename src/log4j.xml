@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration>
+
+    <appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p [%t] %C{2} (%F:%L) - %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="DEFAULT" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" 				value="../logs/pms.log"/>
+        <param name="MaxFileSize" 		value="2048KB"/>
+        <param name="MaxBackupIndex" 	value="5"/>
+        <param name="Append" 			value="false"/>
+        <param name="encoding" 			value="UTF-8"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{HH:mm:ss.SSS} [%t] %-5p %c{1} - %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="ALARM" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" 				value="../logs/alarm.log"/>
+        <param name="MaxFileSize" 		value="2048KB"/>
+        <param name="MaxBackupIndex" 	value="5"/>
+        <param name="Append" 			value="false"/>
+        <param name="encoding" 			value="UTF-8"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{HH:mm:ss.SSS} [%t] %-5p %c{1} - %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="CSV" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" 				value="../logs/csv.log"/>
+        <param name="MaxFileSize" 		value="2048KB"/>
+        <param name="MaxBackupIndex" 	value="5"/>
+        <param name="Append" 			value="false"/>
+        <param name="encoding" 			value="UTF-8"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{HH:mm:ss.SSS} [%t] %-5p %c{1} - %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="NBI" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" 				value="../logs/nbi.log"/>
+        <param name="MaxFileSize" 		value="2048KB"/>
+        <param name="MaxBackupIndex" 	value="5"/>
+        <param name="Append" 			value="false"/>
+        <param name="encoding" 			value="UTF-8"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{HH:mm:ss.SSS} [%t] %-5p %c{1} - %m%n"/>
+        </layout>
+    </appender>
+
+
+
+
+
+    <root>
+        <priority value="INFO"/>
+        <appender-ref ref="DEFAULT"/>
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</log4j:configuration>
