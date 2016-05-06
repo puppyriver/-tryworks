@@ -28,7 +28,7 @@ const BTable = React.createClass({
             'table-hover': this.props.hover
         };
         let table = (
-            <table {...this.props} className={classNames(this.props.className, classes)}>
+            <table {...this.props} className={this.props.className}>
                 {this.props.children}
             </table>
         );

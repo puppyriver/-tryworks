@@ -28,7 +28,7 @@ import java.util.Map;
  */
 public class JdbcTemplateUtil {
     private static Log logger = LogFactory.getLog(JdbcTemplateUtil.class);
-    public static Object insert(JdbcTemplate jdbcTemplate, String tableName, Object obj) {
+    public static Object insert(JdbcTemplate jdbcTemplate,final  String tableName, final Object obj) {
         return jdbcTemplate.execute(new PreparedStatementCreator() {
             @Override
             public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
@@ -112,7 +112,7 @@ public class JdbcTemplateUtil {
 
     }
 
-    public static Object update(JdbcTemplate jdbcTemplate, String tableName, Object obj) {
+    public static Object update(JdbcTemplate jdbcTemplate, final String tableName,final  Object obj) {
         return jdbcTemplate.execute(new PreparedStatementCreator() {
             @Override
             public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {

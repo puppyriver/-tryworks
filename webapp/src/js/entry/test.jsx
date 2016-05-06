@@ -1,14 +1,12 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import BTable from '../component/BTable'
-//import Button from 'react-bootstrap/lib/Button';
-//// or
+import XTable from '../component/XTable.jsx';
 import { Button } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 
 ReactDOM.render(<div>
 
-        <Button bsStyle="primary" bsSize="large">Large button</Button>
-    <BTable></BTable>
+    <XTable ajaxMethod="ajax/queryAllEms"></XTable>
     </div>
 
 

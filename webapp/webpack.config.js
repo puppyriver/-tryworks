@@ -17,6 +17,9 @@ module.exports = {
     },
     devServer: {
         contentBase: dir_build,
+        proxy: {
+            '/ajax/*': 'http://127.0.0.1:8000'
+        }
     },
     module: {
         loaders: [
@@ -26,7 +29,7 @@ module.exports = {
             },
             {
                 loader: 'babel-loader',
-                test: dir_js,
+                test: /\.jsx?$/,
                 query: {
                     presets: ['es2015', 'react'],
                 },

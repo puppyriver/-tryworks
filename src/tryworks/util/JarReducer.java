@@ -42,6 +42,6 @@ public class JarReducer {
         }
     }
     public static void main(String[] args) throws Exception {
-        load("c:\\cls.txt","WEB-INF/lib","outlib");
+        load("c:\\cls.txt","opensource","outlib2");
     }
 }

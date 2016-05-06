@@ -26,6 +26,6 @@
   },
   "scripts": {
     "webpack": "webpack",
-    "start": "webpack-dev-server --hot --inline"
+    "start": "webpack-dev-server --port 9090 --hot --inline"
   }
 }

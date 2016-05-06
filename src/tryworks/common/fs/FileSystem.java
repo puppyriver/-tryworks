@@ -25,7 +25,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class FileSystem {
     private Log logger = LogFactory.getLog(getClass());
 
-    private static ConcurrentHashMap<String,FileSystem> map = new ConcurrentHashMap<>();
+    private static ConcurrentHashMap<String,FileSystem> map = new ConcurrentHashMap();
     private String rootPath = null;
     private File root = null;
     private JdbcTemplate jdbcTemplate = null;
