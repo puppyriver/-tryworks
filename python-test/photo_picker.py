@@ -16,7 +16,7 @@ def variance_of_laplacian(image):
 ap = argparse.ArgumentParser()
 # ap.add_argument("-i", "--images", required=True,
 #                 help="path to input directory of images")
-ap.add_argument("-i","--images",type=str,default="d:\\images")
+ap.add_argument("-i","--images",type=str,default="H:\\mumu_pictures\\camera20171007.0")
 ap.add_argument("-t", "--threshold", type=float, default=100.0,
                 help="focus measures that fall below this value will be considered 'blurry'")
 args = vars(ap.parse_args())
@@ -25,9 +25,9 @@ showImg = False
 
 # loop over the input images
 images = paths.list_images(args["images"])
-print(sum(1 for _ in images))
-
-for imagePath in images:
+total = (sum(1 for _ in images))
+idx = 0
+for imagePath in  paths.list_images(args["images"]):
     # load the image, convert it to grayscale, and compute the
     # focus measure of the image using the Variance of Laplacian
     # method
@@ -45,7 +45,8 @@ for imagePath in images:
             os.mkdir(destDir)
         shutil.move(imagePath, os.path.join(destDir, os.path.basename(imagePath)))
 
-    print("{} value = {}".format(imagePath,fm))
+    idx = idx+1
+    print("{} value = {}, {}/{}".format(imagePath,fm,idx,total))
 
 
 
