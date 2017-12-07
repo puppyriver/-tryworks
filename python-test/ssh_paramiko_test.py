@@ -1,5 +1,6 @@
 import paramiko
 import sys
+import time
 hostname = '135.251.223.141'
 port = 22
 username = 'sbell'
@@ -14,17 +15,18 @@ try:
     channel.send("su - root\n")
     while not channel.recv_ready():
         print("Working...")
-        # time.sleep(2)
+        time.sleep(2)
+
     print(str(channel.recv(1024),"utf-8"))
     channel.send("%s\n" % rootPassword)
     while not channel.recv_ready():
         print("Authenticating...")
-        #time.sleep(2)
+        time.sleep(2)
     print(str(channel.recv(1024),"utf-8"))
     channel.send("id\n")
     while not channel.recv_ready():
         print("Working on part 3...")
-        #time.sleep(10)
+        time.sleep(2)
     print(str(channel.recv(1024),"utf-8"))
 except Exception as e:
     print("error:"+e)
