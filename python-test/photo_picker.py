@@ -16,13 +16,17 @@ def variance_of_laplacian(image):
 ap = argparse.ArgumentParser()
 # ap.add_argument("-i", "--images", required=True,
 #                 help="path to input directory of images")
-ap.add_argument("-i","--images",type=str,default="H:\\mumu_pictures\\camera20171007.0")
+ap.add_argument("-i","--images",type=str,default="H:\\mumu_pictures\\Camera20171127")
 ap.add_argument("-t", "--threshold", type=float, default=100.0,
                 help="focus measures that fall below this value will be considered 'blurry'")
 args = vars(ap.parse_args())
 
 showImg = False
 
+good_photos = []
+goodDir = args["images"]+".good3"
+if not os.path.exists(goodDir):
+    os.mkdir(goodDir)
 # loop over the input images
 images = paths.list_images(args["images"])
 total = (sum(1 for _ in images))
@@ -36,8 +40,27 @@ for imagePath in  paths.list_images(args["images"]):
     fm = variance_of_laplacian(gray)
     text = "Not Blurry"
 
+
+    if fm >= args["threshold"]:
+        count = len(good_photos)
+        for i in range(0,count):
+            if good_photos[i][0] < fm:
+                good_photos.insert(i,(fm,imagePath))
+                break
+
+        if count == len(good_photos):
+            good_photos.append((fm,imagePath))
+
+        if len(good_photos) > 500:
+            good_photos.pop()
+
+
+
+
+
     # if the focus measure is less than the supplied threshold,
     # then the image should be considered "blurry"
+
     if fm < args["threshold"]:
         text = "Blurry"
         destDir = args["images"]+".ignore"
@@ -58,3 +81,6 @@ for imagePath in  paths.list_images(args["images"]):
                     cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 3)
         cv2.imshow("Image", image)
         key = cv2.waitKey(0)
+
+for fm,imagePath in good_photos:
+    shutil.move(imagePath, os.path.join(goodDir, os.path.basename(imagePath)))

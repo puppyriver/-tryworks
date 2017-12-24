@@ -1,3 +1,4 @@
+b = range(0,0)[0]
 import os
 import os.path
 import shutil

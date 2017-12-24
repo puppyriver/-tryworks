@@ -3,8 +3,8 @@ import os.path
 import shutil
 
 # this folder is custom
-rootdir = "H:\mumu_pictures\camera20171007"
-SPLIT_LENGTH = 3000
+rootdir = "H:\mumu_pictures\Camera20171127.ignore"
+SPLIT_LENGTH = 500
 # for f in os.walk(rootdir):
 #     print(f)
 
